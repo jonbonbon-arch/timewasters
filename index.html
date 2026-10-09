@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f6efe6">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="מבזבזי הזמן">
+  <title>מבזבזי הזמן</title>
+  <link rel="icon" href="img/cat-header.jpg">
+  <link rel="apple-touch-icon" href="img/cat-header.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top">
+    <img class="cat cat-header" src="img/cat-header.jpg" alt="אלכס">
+    <div class="top-text">
+      <h1>מבזבזי הזמן</h1>
+      <p class="sub">אלכס סופר כל דקה.</p>
+    </div>
+    <button id="signout" class="btn ghost small" hidden>יציאה</button>
+  </header>
+
+  <main id="app">
+    <section id="screen-loading" class="screen">
+      <p class="muted">טוען…</p>
+    </section>
+
+    <section id="screen-signin" class="screen" hidden>
+      <div class="panel center">
+        <img class="cat cat-sad" src="img/cat-ilay.jpg" alt="אלכס">
+        <p>אלכס שומר על בנק הזמן. צריך להתחבר כדי להיכנס.</p>
+        <button id="signin" class="btn primary">התחברות עם Google</button>
+      </div>
+    </section>
+
+    <section id="screen-denied" class="screen" hidden>
+      <div class="panel center">
+        <img class="cat cat-sad" src="img/cat-sad.jpg" alt="">
+        <p>אלכס לא מכיר את <b id="denied-email" dir="ltr"></b>.</p>
+        <p class="muted">צריך להתחבר עם החשבון של המשפחה.</p>
+      </div>
+    </section>
+
+    <section id="screen-main" class="screen" hidden>
+      <div id="cards" class="cards"></div>
+    </section>
+  </main>
+
+  <template id="tpl-card">
+    <article class="card">
+      <div class="card-head">
+        <img class="cat cat-kid" alt="">
+        <h2 class="kid-name"></h2>
+      </div>
+      <div class="bank-label">זמן בבנק</div>
+      <div class="clock" dir="ltr">0:00</div>
+      <div class="status"></div>
+      <div class="empty" hidden>
+        <img class="cat cat-sad" src="img/cat-sad.jpg" alt="">
+        <p>נגמר הזמן! אלכס מאוכזב 😿</p>
+      </div>
+
+      <div class="controls" hidden>
+        <div class="row main-row">
+          <button class="btn primary" data-act="up">▶ התחל לספור</button>
+          <button class="btn accent" data-act="down">⏳ החזר זמן</button>
+          <button class="btn stop" data-act="stop" hidden>⏹ עצור</button>
+        </div>
+        <div class="row quick-row">
+          <button class="btn ghost" data-act="add" data-min="1">‎+1 דק׳</button>
+          <button class="btn ghost" data-act="add" data-min="5">‎+5 דק׳</button>
+          <button class="btn ghost" data-act="add" data-min="-1">‎−1 דק׳</button>
+          <button class="btn ghost" data-act="add" data-min="-5">‎−5 דק׳</button>
+        </div>
+        <button class="btn danger small" data-act="reset">איפוס</button>
+      </div>
+
+      <details class="history">
+        <summary>היסטוריה</summary>
+        <ul class="log"></ul>
+      </details>
+    </article>
+  </template>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
