@@ -166,7 +166,7 @@ function buildCard(kid, isAdmin) {
   const el = $("#tpl-card").content.firstElementChild.cloneNode(true);
   $(".kid-name", el).textContent = kid.name;
   const img = $(".cat-kid", el);
-  img.src = `img/cat-${kid.id}.jpg`;
+  img.src = `cat-${kid.id}.jpg`;
   $(".controls", el).hidden = !isAdmin;
   el.addEventListener("click", (e) => {
     const btn = e.target.closest("[data-act]");
